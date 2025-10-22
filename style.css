@@ -1,0 +1,225 @@
+/* RESET E CONFIGURAÇÃO GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+/* FUNDO GERAL - AZUL CLARO PARA ESCURO COM BLUR INTENSO */
+body {
+  background: linear-gradient(135deg, #a8c8ff, #003366 85%);
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  overflow: hidden;
+
+  /* Blur intenso */
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+}
+
+/* CONTAINER PRINCIPAL */
+.container-pai {
+  width: 380px;
+  border-radius: 16px;
+  background: rgba(230, 230, 230, 0.25); /* translúcido */
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  padding: 25px;
+  margin-top: 50px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  border: 2px solid #000;
+}
+
+/* BORDA ANIMADA */
+.container-pai::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: 16px;
+  background: linear-gradient(270deg, #ffffff, #e0e0e0, #ffffff);
+  background-size: 400% 400%;
+  animation: borderFlow 8s ease-in-out infinite;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+@keyframes borderFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* TÍTULO */
+.titulo_logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #000;
+  margin-bottom: 18px;
+}
+
+/* INPUTS */
+.input-text {
+  width: 90%;
+  height: 42px;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background: #e6e6e6;
+  color: #000;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  outline: none;
+  transition: all 0.3s ease;
+  margin-bottom: 14px;
+}
+
+.input-text::placeholder {
+  color: #444;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.input-text:focus {
+  border-color: #000;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  background: #f2f2f2;
+}
+
+/* CONTAINER DOS BOTÕES */
+.container-button {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* BOTÕES PRINCIPAIS */
+.btn {
+  width: 43%;
+  height: 42px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+  background: linear-gradient(135deg, #c0c0c0, #999999, #d9d9d9);
+  border: 2px solid #000;
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.6),
+    0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Reflexo animado */
+.btn::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -70%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.1) 80%
+  );
+  transform: rotate(25deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+/* Hover */
+.btn:hover {
+  background: linear-gradient(135deg, #f2f2f2, #d9d9d9, #ffffff);
+  color: #000;
+  box-shadow:
+    inset 0 2px 5px rgba(255, 255, 255, 0.7),
+    0 0 20px rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn:hover::after {
+  left: 120%;
+  opacity: 1;
+}
+
+/* Clique */
+.btn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.3),
+    0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* ÁREA DE RESULTADO */
+.result {
+  width: 90%;
+  min-height: 60px;
+  border-radius: 8px;
+  padding: 10px;
+  background: #e6e6e6; /* mesma cor dos inputs */
+  border: 2px solid #000;
+  color: #000;
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.3);
+  margin: 0 auto 12px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* TEXTO DE RESULTADO */
+.rr {
+  color: #000;
+  font-weight: 600;
+}
+
+/* LINK "CLIQUE AQUI" */
+.opcao {
+  margin-top: 24px;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* BOTÃO CLIQUE AQUI ESTILO */
+.opcao a {
+  display: inline-block;
+  background: #fff;        /* Fundo branco */
+  color: #000;             /* Texto preto */
+  border: 2px solid #000;  /* Borda preta */
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  text-decoration: none;   /* Remove sublinhado */
+  transition: all 0.3s ease;
+}
+
+/* HOVER DO BOTÃO CLIQUE AQUI */
+.opcao a:hover {
+  background: #000;  /* Fundo preto */
+  color: #fff;       /* Texto branco */
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
